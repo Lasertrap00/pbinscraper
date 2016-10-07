@@ -1,7 +1,7 @@
 require 'colorize'
 require 'zlib'
 require 'base64'
-
+require 'open-uri'
 class Utils
 
   @dumpname = "Dump1.dump"
@@ -15,7 +15,7 @@ class Utils
     return t.strftime("%H:%M:%S")
   end
 
-  def log tolog
+  def u_puts tolog
     puts "[#{timeAsString}] ".green + "#{tolog}".yellow
   end
 
@@ -31,8 +31,8 @@ class Utils
     }
   end
 
-  def getRawUrl code
-    return "http://pastebin.com/raw/#{code}"
+  def getRawContent code
+    return URI.parse("http://pastebin.com/raw/#{code}").read
   end
 
 end

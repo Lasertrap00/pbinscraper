@@ -8,6 +8,8 @@ require 'nokogiri'
 
 @util.u_puts "Starting Pastebin Scraper by Sapphyrus and Lasertrap..."
 
+@util.u_puts @util.getRawContent("MSXHTrZT")
+
 while true
 
   pastes = Array.new
