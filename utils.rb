@@ -2,9 +2,17 @@ require 'colorize'
 
 class Utils
 
-  def Log(toLog)
-      t = Time.now
-      time = t.strftime("%H:%M:%S")
-      puts "[#{time}] ".green + "#{toLog}\n".yellow
+  def timeAsString
+    t = Time.now
+    return t.strftime("%H:%M:%S")
+  end
+
+  def log tolog
+    puts "[#{timeAsString}] ".green + "#{tolog}".yellow
+  end
+
+  def getFromUser toDisplay
+    print "[#{timeAsString}] ".green + "#{toDisplay}: ".red
+    return gets.chomp
   end
 end
