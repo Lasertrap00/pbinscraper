@@ -7,7 +7,7 @@ class Utils
     return t.strftime("%H:%M:%S")
   end
 
-  def log tolog
+  def u_puts tolog
     puts "[#{timeAsString}] ".green + "#{tolog}".yellow
   end
 
@@ -15,4 +15,5 @@ class Utils
     print "[#{timeAsString}] ".green + "#{toDisplay}: ".red
     return gets.chomp
   end
+
 end

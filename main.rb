@@ -8,17 +8,22 @@ require 'nokogiri'
 
 @util.u_puts "Starting Pastebin Scraper by Sapphyrus and Lasertrap..."
 
-pastes = Array.new
+while true
 
-page = Nokogiri::HTML(open('http://pastebin.com/archive'))
+  pastes = Array.new
+  scannedpastes = Array.new
 
-array = page.css('table')[0].to_s.split('				<td>')
+  page = Nokogiri::HTML(open('http://pastebin.com/archive'))
 
-array.each do | split |
-  v = split.split('<a href=\"').to_s[61..68]
-  if v != "h scope="
-    pastes.push(v)
+  array = page.css('table')[0].to_s.split('				<td>')
+
+  array.each do | split |
+    v = split.split('<a href=\"').to_s[61..68]
+    if v != "h scope="
+      pastes.push(v)
+    end
   end
-end
 
-puts pastes.to_s
+  puts pastes.to_s
+  sleep(10)
+end
