@@ -8,12 +8,12 @@ require 'nokogiri'
 
 @util.u_puts "Starting Pastebin Scraper by Sapphyrus and Lasertrap..."
 
-@util.u_puts @util.getRawContent("MSXHTrZT")
+scannedpastes = Array.new
 
 while true
 
   pastes = Array.new
-  scannedpastes = Array.new
+
 
   page = Nokogiri::HTML(open('http://pastebin.com/archive'))
 
@@ -27,5 +27,8 @@ while true
   end
 
   puts pastes.to_s
-  sleep(10)
+  pastes.each do | paste |
+    @util.u_puts @util.getRawContent(paste)
+  end
+  sleep(60)
 end
