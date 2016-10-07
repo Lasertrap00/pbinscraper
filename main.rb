@@ -4,7 +4,7 @@ require_relative 'utils'
 require 'open-uri'
 require 'nokogiri'
 
-@util =  Utils.new
+@util =  Utils.new "dump1.dump"
 
 @util.u_puts "Starting Pastebin Scraper by Sapphyrus and Lasertrap..."
 
