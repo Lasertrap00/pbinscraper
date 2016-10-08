@@ -4,9 +4,9 @@ require_relative 'utils'
 require 'open-uri'
 require 'nokogiri'
 
-@util =  Utils.new "dump1.dump"
+@util = Utils.new 'dump1.dump'
 
-@util.u_puts "Starting Pastebin Scraper by Sapphyrus and Lasertrap..."
+@util.u_puts 'Starting Pastebin Scraper by Sapphyrus and Lasertrap...'
 
 scannedpastes = Array.new
 
@@ -20,7 +20,7 @@ while true
 
   array.each do | split |
     v = split.split('<a href=\"').to_s[61..68]
-    if v != "h scope="
+    if v != 'h scope='
       pastes.push(v)
     end
   end

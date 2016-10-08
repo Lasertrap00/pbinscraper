@@ -17,7 +17,7 @@ class Utils
 
   def time_as_string
     t = Time.now
-    t.strftime("%H:%M:%S")
+    t.strftime('%H:%M:%S')
   end
 
   def u_puts tolog
@@ -37,11 +37,11 @@ class Utils
     compressed = Base64.encode64 Zlib::Deflate.deflate to_dump
 
     File.open(@dump_name, 'a+') {|file|
-      file.write compressed + "|D|"
+      file.write compressed + '|D|'
     }
   end
 
   def get_raw_content code
-    "\n" +  "------------------------------------ "+ to_url(code) +" -----------------------------------------------" + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
+    "\n" + '------------------------------------ '+ to_url(code) +' -----------------------------------------------' + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
   end
 end
