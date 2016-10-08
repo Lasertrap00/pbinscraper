@@ -6,7 +6,7 @@ require 'nokogiri'
 require 'tor_requests'
 
 
-@util = Utils.new 'dump1.dump'
+@util = Utils.new
 
 @util.u_puts 'Starting Pastebin Scraper by Sapphyrus and Lasertrap...'
 scannedpastes = Array.new

@@ -6,16 +6,9 @@ require 'win32/registry'
 
 class Utils
 
-  @dump_name = "Dump1.dump"
   @filter = Array.new
 
-  def get_dump_name
-     @dump_name
-  end
-
-  def initialize name_of_dump
-    @dump_name = name_of_dump
-
+  def initialize
     File.open('words.txt').each do |line|
       @filter.push line.downcase
     end
@@ -68,10 +61,6 @@ class Utils
 
   def dump to_dump
     compressed = Base64.encode64 Zlib::Deflate.deflate to_dump
-
-    File.open(@dump_name, 'a+') {|file|
-      file.write compressed + '|D|'
-    }
   end
 
   def get_raw_content code

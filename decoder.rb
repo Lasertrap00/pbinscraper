@@ -3,9 +3,9 @@ require_relative 'utils'
 require 'zlib'
 require 'base64'
 
-@util = Utils.new 'dump1.dump'
+@util = Utils.new
 
-s = IO.read(@util.get_dump_name)
+#s = IO.read(@util.get_dump_name)
 
 pastes = s.split '|D|'
 
