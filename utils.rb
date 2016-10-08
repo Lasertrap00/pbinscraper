@@ -6,6 +6,10 @@ class Utils
 
   @dumpname = "Dump1.dump"
 
+  def get_dump_name
+    return @dumpname
+  end
+
   def initialize nameOfDump
     @dumpname = nameOfDump
   end
@@ -24,6 +28,10 @@ class Utils
     return gets.chomp
   end
 
+  def to_url code
+    return "http://pastebin.com/#{code}"
+  end
+
   def dump toDump
     compressed = Base64.encode64 Zlib::Deflate.deflate toDump
     File.open(@dumpname, 'a+') {|file|
@@ -32,7 +40,7 @@ class Utils
   end
 
   def getRawContent code
-    return URI.parse("http://pastebin.com/raw/#{code}").read
+    return  "\n" +  "------------------------------------ "+ to_url(code) +" -----------------------------------------------" + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
   end
 
 end
