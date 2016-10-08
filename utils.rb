@@ -16,12 +16,12 @@ class Utils
     @dump_name = name_of_dump
 
     File.open('words.txt').each do |line|
-      @filter.push line
+      @filter.push line.downcase
     end
   end
 
   def should_dump paste
-    @filter.any? { |word| paste.include?(word) }
+    @filter.any? { |word| paste.downcase.include?(word) }
   end
 
   def time_as_string

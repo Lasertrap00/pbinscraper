@@ -1,0 +1,8 @@
+.de
+.com
+steam
+password
+aimbot
+triggerbot
+int main
+visuals
