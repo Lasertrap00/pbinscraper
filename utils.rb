@@ -2,45 +2,46 @@ require 'colorize'
 require 'zlib'
 require 'base64'
 require 'open-uri'
+
 class Utils
 
-  @dumpname = "Dump1.dump"
+  @dump_name = "Dump1.dump"
 
   def get_dump_name
-    return @dumpname
+     @dump_name
   end
 
-  def initialize nameOfDump
-    @dumpname = nameOfDump
+  def initialize name_of_dump
+    @dump_name = name_of_dump
   end
 
-  def timeAsString
+  def time_as_string
     t = Time.now
-    return t.strftime("%H:%M:%S")
+    t.strftime("%H:%M:%S")
   end
 
   def u_puts tolog
-    puts "[#{timeAsString}] ".green + "#{tolog}".yellow
+    puts "[#{time_as_string}] ".green + "#{tolog}".yellow
   end
 
-  def getFromUser toDisplay
-    print "[#{timeAsString}] ".green + "#{toDisplay}: ".red
-    return gets.chomp
+  def get_from_user to_ask
+    print "[#{time_as_string}] ".green + "#{to_ask}: ".red
+    gets.chomp
   end
 
   def to_url code
-    return "http://pastebin.com/#{code}"
+    "http://pastebin.com/#{code}"
   end
 
-  def dump toDump
-    compressed = Base64.encode64 Zlib::Deflate.deflate toDump
-    File.open(@dumpname, 'a+') {|file|
+  def dump to_dump
+    compressed = Base64.encode64 Zlib::Deflate.deflate to_dump
+    File.open(@dump_name, 'a+') {|file|
       file.write compressed + "|D|"
     }
   end
 
-  def getRawContent code
-    return  "\n" +  "------------------------------------ "+ to_url(code) +" -----------------------------------------------" + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
+  def get_raw_content code
+    "\n" +  "------------------------------------ "+ to_url(code) +" -----------------------------------------------" + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
   end
 
 end
