@@ -6,6 +6,7 @@ require 'open-uri'
 class Utils
 
   @dump_name = "Dump1.dump"
+  @filter = Array.new
 
   def get_dump_name
      @dump_name
@@ -13,6 +14,14 @@ class Utils
 
   def initialize name_of_dump
     @dump_name = name_of_dump
+
+    File.open('words.txt').each do |line|
+      @filter.push line
+    end
+  end
+
+  def should_dump paste
+    @filter.any? { |word| paste.include?(word) }
   end
 
   def time_as_string
