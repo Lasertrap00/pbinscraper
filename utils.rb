@@ -59,6 +59,10 @@ class Utils
     "http://pastebin.com/#{code}"
   end
 
+  def get_filter
+    @filter
+  end
+
   def dump to_dump
     compressed = Base64.encode64 Zlib::Deflate.deflate to_dump
   end
