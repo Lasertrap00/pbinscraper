@@ -42,6 +42,6 @@ class Utils
   end
 
   def get_raw_content code
-    "\n" + '------------------------------------ '+ to_url(code) +' -----------------------------------------------' + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
+    "\n" + '------------------------------------ '+ to_url(code) +' -----------------------------------------------' + "\n\n" + open(URI("http://pastebin.com/raw/#{code}")).read
   end
 end

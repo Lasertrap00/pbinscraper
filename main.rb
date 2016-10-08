@@ -3,18 +3,18 @@ require_relative 'utils'
 
 require 'open-uri'
 require 'nokogiri'
+require 'tor_requests'
 
 @util = Utils.new 'dump1.dump'
 
 @util.u_puts 'Starting Pastebin Scraper by Sapphyrus and Lasertrap...'
-
 scannedpastes = Array.new
 
 while true
 
   pastes = Array.new
 
-  page = Nokogiri::HTML(open('http://pastebin.com/archive'))
+  page = Nokogiri::HTML(open 'http://pastebin.com/archives')
 
   array = page.css('table')[0].to_s.split('				<td>')
 
