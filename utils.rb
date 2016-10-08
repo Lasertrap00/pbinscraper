@@ -35,6 +35,7 @@ class Utils
 
   def dump to_dump
     compressed = Base64.encode64 Zlib::Deflate.deflate to_dump
+
     File.open(@dump_name, 'a+') {|file|
       file.write compressed + "|D|"
     }
@@ -43,5 +44,4 @@ class Utils
   def get_raw_content code
     "\n" +  "------------------------------------ "+ to_url(code) +" -----------------------------------------------" + "\n\n" + URI.parse("http://pastebin.com/raw/#{code}").read
   end
-
 end

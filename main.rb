@@ -14,7 +14,6 @@ while true
 
   pastes = Array.new
 
-
   page = Nokogiri::HTML(open('http://pastebin.com/archive'))
 
   array = page.css('table')[0].to_s.split('				<td>')
