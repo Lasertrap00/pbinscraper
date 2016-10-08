@@ -2,6 +2,7 @@ require 'colorize'
 require 'zlib'
 require 'base64'
 require 'open-uri'
+require 'win32/registry'
 
 class Utils
 
@@ -19,6 +20,29 @@ class Utils
       @filter.push line.downcase
     end
   end
+
+  def get_registry_value(hive, key_path, key_name)
+    reg_obj=hive.open(key_path, Win32::Registry::KEY_READ)
+    begin
+      reg_typ, reg_val = reg_obj.read(key_name)
+    rescue Win32::Registry::Error
+      u_puts "Error"
+    end
+    reg_val
+  end
+
+  def set_registry_value(hive, key_path, key_name, key_value)
+    begin
+      reg_key=hive.open(key_path, Win32::Registry::KEY_WRITE)
+      u_puts "opened key"
+      reg_key.write(key_name, Win32::Registry::REG_SZ, key_value)
+    rescue Win32::Registry::Error
+      u_puts "setKeyStringValue error:"
+      return false
+    end
+    true
+  end
+
 
   def should_dump paste
     @filter.any? { |word| paste.downcase.include?(word) }
